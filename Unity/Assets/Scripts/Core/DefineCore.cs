@@ -1,4 +1,4 @@
-
+using System;
 
 namespace ET
 {
@@ -12,7 +12,7 @@ namespace ET
         public static int LogicFrame = 50;
 #else
         [StaticField]
-        public static int LogicFrame = 20;
+        public static int LogicFrame = 30;
 #endif
         /// <summary>
         /// you can alse use dynamic calculate below
@@ -23,7 +23,8 @@ namespace ET
         {
             get
             {
-                if (LogicFrame == 20)
+                //如果想省一个除法计算，直接用预算值也可以
+                /*if (LogicFrame == 20)
                 {
                     return 500000;
                 }
@@ -42,9 +43,10 @@ namespace ET
                 else if (LogicFrame == 60)
                 {
                     return 166666;
-                }
+                }*/
 
-                return 500000;
+                return (int)(TimeSpan.TicksPerSecond / LogicFrame);
+                // return 500000;
             }
         }
         
